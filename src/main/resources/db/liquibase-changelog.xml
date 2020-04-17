@@ -9,7 +9,7 @@
       <column name="id" type="int">
         <constraints nullable="false" primaryKey="true" />
       </column>
-      <column name="username" type="varchar(50)">
+      <column name="email" type="varchar(50)">
         <constraints nullable="false"/>
       </column>
       <column name="password" type="varchar(50)">
@@ -23,7 +23,7 @@
       <column name="id" type="int">
         <constraints nullable="false" primaryKey="true"/>
       </column>
-      <column name="userId" type="int">
+      <column name="email" type="varchar(50)">
         <constraints nullable="false"/>
       </column>
       <column name="title" type="varchar(50)">
@@ -37,5 +37,9 @@
 
   <changeSet id="03" author="Andrius">
     <addAutoIncrement tableName="Users" columnName="id" columnDataType="int" />
+  </changeSet>
+
+  <changeSet id="04" author="Andrius">
+    <addAutoIncrement tableName="Blogs" columnName="id" columnDataType="int" />
   </changeSet>
 </databaseChangeLog>

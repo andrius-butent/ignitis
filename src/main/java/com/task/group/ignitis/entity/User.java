@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -17,9 +18,10 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "username")
-    @NotEmpty(message = "Username is required")
-    private String username;
+    @Column(name = "email")
+    @NotEmpty(message = "Email is required")
+    @Email(message = "Email is not valid")
+    private String email;
 
     @Column(name = "password")
     @NotEmpty(message = "Password is required")
@@ -33,12 +35,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

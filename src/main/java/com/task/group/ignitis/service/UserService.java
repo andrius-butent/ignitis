@@ -4,7 +4,7 @@ import com.task.group.ignitis.entity.User;
 
 public interface UserService {
 
-    User findUserByUsername(String username);
+    User findUserByEmail(String email);
 
     Integer registerUser(User user);
 

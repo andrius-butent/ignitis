@@ -17,12 +17,12 @@ public class UserDAOImpl implements UserDAO{
 
 
     @Override
-    public User findUserByUsername(String username) {
+    public User findUserByEmail(String email) {
 
         Session session = getSession();
 
-        Query<User> query = session.createQuery("FROM User WHERE username=:username", User.class);
-        query.setParameter("username", username);
+        Query<User> query = session.createQuery("FROM User WHERE email=:email", User.class);
+        query.setParameter("email", email);
 
         List<User> users = query.getResultList();
 
@@ -38,7 +38,7 @@ public class UserDAOImpl implements UserDAO{
 
         Session session = getSession();
 
-        User theUser = findUserByUsername(user.getUsername());
+        User theUser = findUserByEmail(user.getEmail());
 
         if (theUser == null) {
             return (Integer) session.save(user);
@@ -52,8 +52,8 @@ public class UserDAOImpl implements UserDAO{
 
         Session session = getSession();
 
-        Query<User> query = session.createQuery("FROM User WHERE username=:username AND password=:password", User.class);
-        query.setParameter("username", user.getUsername());
+        Query<User> query = session.createQuery("FROM User WHERE email=:email AND password=:password", User.class);
+        query.setParameter("email", user.getEmail());
         query.setParameter("password", user.getPassword());
 
         List<User> users = query.getResultList();

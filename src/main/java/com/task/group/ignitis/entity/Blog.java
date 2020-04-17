@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Table(name = "Blogs")
 public class Blog {
 
     @Id
@@ -15,9 +17,9 @@ public class Blog {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "username")
+    @Column(name = "email")
     @NotEmpty
-    private String username;
+    private String email;
 
     @Column(name = "title")
     @NotEmpty(message = "Title is required")
@@ -35,14 +37,6 @@ public class Blog {
         this.id = id;
     }
 
-    public String getUserId() {
-        return username;
-    }
-
-    public void setUserId(String username) {
-        this.username = username;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -57,5 +51,13 @@ public class Blog {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -31,8 +31,10 @@ public class UserController {
 
         if (id != null && id > 0) {
             return ResponseEntity.status(HttpStatus.CREATED).body("User is registered successfully!");
+
         } else if (id != null && id == -1) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with username " + "'" + user.getUsername() + "' already exist.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User with email " + "'" + user.getEmail() + "' already exist.");
+
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong.");
         }
@@ -45,9 +47,10 @@ public class UserController {
         }
 
         if (userService.loginUser(user)) {
-            return ResponseEntity.status(HttpStatus.OK).body("User " + "'" + user.getUsername() + "' is logged in.");
+            return ResponseEntity.status(HttpStatus.OK).body("User with email " + "'" + user.getEmail() + "' is logged in.");
+
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username or password is invalid!");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email or password is invalid!");
         }
     }
 
