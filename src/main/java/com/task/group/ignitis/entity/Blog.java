@@ -17,9 +17,8 @@ public class Blog {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "email")
-    @NotEmpty
-    private String email;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "title")
     @NotEmpty(message = "Title is required")
@@ -53,11 +52,11 @@ public class Blog {
         this.text = text;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

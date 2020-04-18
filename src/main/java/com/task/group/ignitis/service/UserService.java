@@ -1,12 +1,24 @@
 package com.task.group.ignitis.service;
 
+import com.task.group.ignitis.dao.UserDAO;
 import com.task.group.ignitis.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public interface UserService {
+@Service
+public class UserService {
 
-    User findUserByEmail(String email);
+    @Autowired
+    private UserDAO userDAO;
 
-    Integer registerUser(User user);
+    @Transactional
+    public User findByUsername(String username) {
+        return userDAO.findByUsername(username);
+    }
 
-    boolean loginUser(User user);
+    @Transactional
+    public void saveUser(User user) {
+        userDAO.save(user);
+    }
 }

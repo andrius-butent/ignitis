@@ -1,14 +1,36 @@
 package com.task.group.ignitis.service;
 
+import com.task.group.ignitis.dao.BlogDAO;
 import com.task.group.ignitis.entity.Blog;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface BlogService {
+@Service
+public class BlogService {
 
-    List<Blog> getBlogByUser(String email);
+    @Autowired
+    private BlogDAO blogDAO;
 
-    void deleteBlogByID(Integer id);
+    @Transactional
+    public void saveBlog(Blog blog) {
+        blogDAO.save(blog);
+    }
 
-    void addBlog(Blog blog);
+    @Transactional
+    public List<Blog> findAllByUsername(String username) {
+        return blogDAO.findAllByUsername(username);
+    }
+
+    @Transactional
+    public void deleteBlogById(Integer id) {
+        blogDAO.deleteById(id);
+    }
+
+    @Transactional
+    public Blog findByIdAndUsername(Integer id, String username) {
+        return blogDAO.findByIdAndUsername(id, username);
+    }
 }

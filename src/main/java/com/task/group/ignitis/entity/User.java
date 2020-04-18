@@ -18,14 +18,17 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "email")
-    @NotEmpty(message = "Email is required")
+    @Column(name = "username")
+    @NotEmpty(message = "Username is required")
     @Email(message = "Email is not valid")
-    private String email;
+    private String username;
 
     @Column(name = "password")
     @NotEmpty(message = "Password is required")
     private String password;
+
+    @Column(name = "role")
+    private String role;
 
     public Integer getId() {
         return id;
@@ -35,12 +38,12 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -49,5 +52,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
