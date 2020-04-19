@@ -30,12 +30,13 @@ public class User {
     @Column(name = "role")
     private String role;
 
-    public Integer getId() {
-        return id;
+
+    public User(){
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -54,11 +55,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

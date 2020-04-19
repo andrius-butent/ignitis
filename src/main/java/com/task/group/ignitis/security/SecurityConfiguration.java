@@ -24,6 +24,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        // enable basic authentication for blog API
         http.csrf().disable()
                 .authorizeRequests().antMatchers("/blog/**").authenticated()
                 .and().httpBasic()
@@ -32,6 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
+        // configuration to proceed requests only if user exists in DB
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(USER_QUERY)
                 .authoritiesByUsernameQuery(USER_ROLE_QUERY);

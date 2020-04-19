@@ -25,8 +25,8 @@ public class BlogService {
     }
 
     @Transactional
-    public void deleteBlogById(Integer id) {
-        blogDAO.deleteById(id);
+    public void deleteByIdAndUsername(Integer id, String username) {
+        blogDAO.deleteByIdAndUsername(id, username);
     }
 
     @Transactional

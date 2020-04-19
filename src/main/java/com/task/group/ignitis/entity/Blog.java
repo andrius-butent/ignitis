@@ -28,12 +28,13 @@ public class Blog {
     @NotEmpty(message = "Text is required")
     private String text;
 
-    public Integer getId() {
-        return id;
+    public Blog(){
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Blog(String username, String title, String text) {
+        this.username = username;
+        this.title = title;
+        this.text = text;
     }
 
     public String getTitle() {
@@ -58,5 +59,13 @@ public class Blog {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

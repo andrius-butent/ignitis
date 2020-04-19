@@ -31,10 +31,10 @@ public class BlogController {
     private SecurityValidator validator;
 
 
-
     @PostMapping(value = "/addBlog")
-    public ResponseEntity test(@Valid @RequestBody Blog blog, Authentication auth, BindingResult bindingResult) {
+    public ResponseEntity addBlog(@Valid @RequestBody Blog blog, Authentication auth, BindingResult bindingResult) {
 
+        // check if we have errors in JSON body
         if (bindingResult.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validator.validatePayload(bindingResult));
         }
@@ -52,8 +52,8 @@ public class BlogController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity deleteBlog(@PathVariable("id") Integer id) {
-       blogService.deleteBlogById(id);
+    public ResponseEntity deleteBlog(@PathVariable("id") Integer id, Authentication auth) {
+       blogService.deleteByIdAndUsername(id, auth.getName());
 
        return ResponseEntity.ok().body("Record is deleted.");
     }

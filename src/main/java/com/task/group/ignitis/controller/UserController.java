@@ -27,6 +27,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity registerUser(@Valid @RequestBody User user, BindingResult bindingResult) {
 
+        // check if we have errors in JSON body
         if (bindingResult.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validator.validatePayload(bindingResult));
         }
@@ -47,6 +48,8 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity login(@Valid @RequestBody User user, BindingResult bindingResult) {
+
+        // check if we have errors in JSON body
         if (bindingResult.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validator.validatePayload(bindingResult));
         }

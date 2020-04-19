@@ -12,4 +12,6 @@ public interface BlogDAO extends JpaRepository<Blog, Integer> {
     List<Blog> findAllByUsername(String username);
 
     Blog findByIdAndUsername(Integer id, String username);
+
+    void deleteByIdAndUsername(Integer id, String username);
 }
